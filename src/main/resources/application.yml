@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: pigeon
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/pigeon
+    username: postgres
+    password: 2001
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        id.new_generator_mappings: true
+
+server:
+  port: 8081
+
+logging:
+  level:
+    root: INFO
+    org.springframework.web: DEBUG
+    org.springframework.data.jpa: DEBUG
+    org.hibernate: INFO
