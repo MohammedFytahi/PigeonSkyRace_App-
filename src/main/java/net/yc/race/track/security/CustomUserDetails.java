@@ -18,13 +18,12 @@ public class CustomUserDetails implements UserDetails {
 
     @Override
     public Collection<? extends SimpleGrantedAuthority> getAuthorities() {
-        // You can add roles or permissions here
-        return Collections.singletonList(new SimpleGrantedAuthority("ROLE_USER"));
+         return Collections.singletonList(new SimpleGrantedAuthority("ROLE_USER"));
     }
 
     @Override
     public String getPassword() {
-        return user.getPassword();  // Assuming password is already encoded
+        return user.getPassword();
     }
 
     @Override
@@ -34,22 +33,22 @@ public class CustomUserDetails implements UserDetails {
 
     @Override
     public boolean isAccountNonExpired() {
-        return true;  // You can add more logic here if needed
+        return true;
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        return true;  // You can add more logic here if needed
+        return true;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return true;  // You can add more logic here if needed
+        return true;
     }
 
     @Override
     public boolean isEnabled() {
-        return true;  // You can add more logic here if needed
+        return true;
     }
 
     public User getUser() {

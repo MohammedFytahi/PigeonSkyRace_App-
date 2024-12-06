@@ -2,6 +2,7 @@ package net.yc.race.track.model;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import lombok.*;
+import net.yc.race.track.Enum.Role;
 import org.springframework.data.annotation.Id;
 
 import java.util.List;
@@ -42,5 +43,8 @@ public class User {
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user", fetch = FetchType.LAZY)
     private List<Pigeon> Pigeons;
+
+    @Enumerated(EnumType.STRING)
+    private Role role = Role.ROLE_USER;
 
 }
