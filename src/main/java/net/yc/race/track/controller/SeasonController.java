@@ -7,6 +7,7 @@ import net.yc.race.track.service.SeasonService;
 import net.yc.race.track.serviceInf.SeasonServiceInf;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,6 +22,7 @@ public class SeasonController {
 
     private final SeasonServiceInf seasonService;
 
+    @PreAuthorize("hasRole('ORGANIZER')")
     @PostMapping("/add")
     public Season createSeason(@RequestBody Season season) {
         return seasonService.saveSeason(season);
@@ -34,8 +36,7 @@ public class SeasonController {
             season.setStatus(Status.DONE);
             seasonService.saveSeason(season);
 
-            // Generate and return rankings for the season
-            List<Map<String, Object>> rankings = seasonService.getBreederRankings(id);
+             List<Map<String, Object>> rankings = seasonService.getBreederRankings(id);
             return ResponseEntity.ok(rankings);
         } else {
             return ResponseEntity.status(404).body("Season not found.");
