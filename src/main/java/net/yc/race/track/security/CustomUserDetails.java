@@ -3,7 +3,6 @@ package net.yc.race.track.security;
 import net.yc.race.track.model.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.authority.AuthorityUtils;
 
 import java.util.Collection;
 import java.util.Collections;
